@@ -1,0 +1,32 @@
+{% extends 'wrapper.html' %}
+{% block content %}
+<div class="container mt-5">
+<h1>Books Catalog</h1>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+    <a class="btn btn-success" href="{% url 'create_book' %}">Create book</a>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+    {% for book in books %}
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0">{{ book.name }}</h3>
+            <div class="mb-1">
+                By 
+                {% for author in book.get_authors %}
+                    {{ author }}
+                {% endfor %}
+            </div>
+            <div class="mb-1 text-muted">In Stock: {{ book.count }}</div>
+            <a href="{% url 'book_details' book.id %}"  class="btn btn-secondary">Read more</a>
+            <td><a class="btn btn-warning" href="{% url 'update_book' book.id %}">Update</a> </td>
+            <td><a class="btn btn-danger" href="{% url 'delete_book' book.id %}">Delete</a> </td>
+        </div>
+        </div>
+{% endfor %}
+
+{% include 'paginator.html' with data=books %}
+
+{% endblock content %}

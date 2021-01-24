@@ -1,0 +1,34 @@
+{% extends 'wrapper.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+
+            <h3> Create an order </h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            Select a user: {{ form.user|add_class:"form-control"}}<br>
+            Select a book: {{ form.book |add_class:"form-control"}}<br>
+            Returning Date: {% render_field form.plated_end_at class="form-control" placeholder="yyyy-mm-dd" %}<br>
+
+            <a class="btn btn-warning" href="{% url 'order_listing' %}">Cancel</a>
+            <input class="btn btn-danger" type='submit' name="Submit">
+            <span>{{error}}</span>
+        </form>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

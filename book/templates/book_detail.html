@@ -1,0 +1,18 @@
+{% extends 'wrapper.html' %}
+{% block content %}
+    <article class="blog-post">
+        <h2 class="blog-post-title">{{ book.name }}</h2>
+        <h3>By 
+            {% for author in book.get_authors %}
+                {{ author }}
+            {% endfor %}
+        </h3>
+        <hr>
+        <h2>Description</h2>
+        <p>{{ book.description }}</p>
+        <hr>
+        <p>In Stock: {{ book.count }}</p>
+        <td><a class="btn btn-warning" href="{% url 'update_book' book.id %}">Update</a> </td>
+        <td><a class="btn btn-danger" href="{% url 'delete_book' book.id %}">Delete</a> </td>
+    </article>
+{% endblock content %}

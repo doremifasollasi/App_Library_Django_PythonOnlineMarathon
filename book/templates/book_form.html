@@ -1,0 +1,26 @@
+{% extends 'wrapper.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+        <form action="" method="post">
+                {% csrf_token %}
+                {{ form.name|add_class:"form-control" }}<br>
+                {{ form.description|add_class:"form-control" }}<br>
+                {{ form.count|add_class:"form-control" }}<br>
+                <p> </p>
+                <h6><a class="btn btn-primary btn-sm" href="{% url 'create_author' %}" target="_blank" >Create author</a>  or select from the list below </h6>
+                <p> </p>
+                {{ form.authors|add_class:"form-control" }}<br>
+                
+                <a class="btn btn-warning" href="{% url 'book_listing' %}">Cancel</a>
+                <button type="submit" class="btn btn-success">Confirm</button>
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
