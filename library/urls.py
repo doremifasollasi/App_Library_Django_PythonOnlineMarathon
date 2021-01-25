@@ -21,13 +21,18 @@ from book import urls as book_urls
 from author import urls as author_urls
 from authentication import urls as auth_urls
 from order import urls as order_urls
+from api import urls as api_urls
 
 
 urlpatterns = [
+
     path('', home_view, name="home"),
     path('admin/', admin.site.urls),
     path('books/', include(book_urls)),
     path('authors/', include(author_urls)),
     path('user/', include(auth_urls)),
     path('orders/', include(order_urls)),
+    path('api/', include(api_urls)),
+    
 ]
+
